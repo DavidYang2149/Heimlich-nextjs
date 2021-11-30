@@ -1,9 +1,5 @@
-# Nextjs starter
-- Nextjs starter
+# Heimlich Nextjs
+- 하임리히 프로젝트
 
-## 사용기술 
-- Next
-- React
-- Typescript
-- Jest
-- Cypress
+## 설명
+- 수유 기록 노트입니다.

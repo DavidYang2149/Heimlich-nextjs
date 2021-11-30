@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-starter",
+  "name": "heimlich-nextjs",
   "version": "1.0.1",
   "description": "nextjs starter",
   "scripts": {
@@ -44,17 +44,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DavidYang2149/nextjs-starter.git"
+    "url": "git+https://github.com/DavidYang2149/heimlich-nextjs.git"
   },
   "keywords": [
-    "nextjs",
-    "starter",
-    "template"
+    "heimlich",
+    "nextjs"
   ],
   "author": "davidyang2149",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DavidYang2149/nextjs-starter/issues"
+    "url": "https://github.com/DavidYang2149/heimlich-nextjs/issues"
   },
-  "homepage": "https://github.com/DavidYang2149/nextjs-starter#readme"
+  "homepage": "https://github.com/DavidYang2149/heimlich-nextjs#readme"
 }

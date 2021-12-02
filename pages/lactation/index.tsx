@@ -17,11 +17,11 @@ const LactationPage = () => {
         </h1>
         <div>
           <label htmlFor="breastMilk" className={styles.label}>직수</label>
-          <input type="radio" name="lactationType" id="breastMilk" value="breastMilk" />
+          <input type="radio" name="lactationType" id="breastMilk" value="breastMilk" readOnly />
           <label htmlFor="MotherBottleMilk" className={styles.label}>모유</label>
-          <input type="radio" name="lactationType" id="MotherBottleMilk" value="MotherBottleMilk" />
+          <input type="radio" name="lactationType" id="MotherBottleMilk" value="MotherBottleMilk" readOnly />
           <label htmlFor="PowderedBottleMilk" className={styles.label}>분유</label>
-          <input type="radio" name="lactationType" id="PowderedBottleMilk" value="PowderedBottleMilk" />
+          <input type="radio" name="lactationType" id="PowderedBottleMilk" value="PowderedBottleMilk" readOnly />
         </div>
         <div>
           <label htmlFor="amount" className={styles.label}>용량</label>
@@ -33,6 +33,7 @@ const LactationPage = () => {
             min="0"
             max="999"
             className={styles.amount}
+            readOnly
           />
         </div>
         <div>

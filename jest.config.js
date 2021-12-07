@@ -1,5 +1,9 @@
 module.exports = {
+  modulePaths: [
+    "<rootDir>",
+  ],
   setupFilesAfterEnv: [
+    'jest-plugin-context/setup',
     '<rootDir>/jest.setup.js'
   ],
   collectCoverageFrom: [
@@ -26,6 +30,10 @@ module.exports = {
     'jest.config.js',
     'next.config.js',
     '_app',
+    'store',
+    'rootReducer',
+    '<rootDir>/src/types',
+
   ],
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',

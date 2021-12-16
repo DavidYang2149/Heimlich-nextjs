@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import LactationContainer from 'src/containers/lactation/LactationContainer';
+
 import styles from 'styles/Insert.module.css';
 
 const LactationPage = () => {
@@ -12,33 +14,7 @@ const LactationPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          수유 일지
-        </h1>
-        <div>
-          <label htmlFor="breastMilk" className={styles.label}>직수</label>
-          <input type="radio" name="lactationType" id="breastMilk" value="breastMilk" readOnly />
-          <label htmlFor="MotherBottleMilk" className={styles.label}>모유</label>
-          <input type="radio" name="lactationType" id="MotherBottleMilk" value="MotherBottleMilk" readOnly />
-          <label htmlFor="PowderedBottleMilk" className={styles.label}>분유</label>
-          <input type="radio" name="lactationType" id="PowderedBottleMilk" value="PowderedBottleMilk" readOnly />
-        </div>
-        <div>
-          <label htmlFor="amount" className={styles.label}>용량</label>
-          <input
-            type="number"
-            id="amount"
-            name="amount"
-            value="0"
-            min="0"
-            max="999"
-            className={styles.amount}
-            readOnly
-          />
-        </div>
-        <div>
-          <button type="button" className={styles.button}>저장</button>
-        </div>
+        <LactationContainer />
       </main>
 
       <footer className={styles.footer}>

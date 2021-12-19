@@ -31,7 +31,7 @@ describe('LactationContainer', () => {
 
   describe('handleClickAddFolder 함수를 검사하기 위해', () => {
     context('분유를 선택하면', () => {
-      it('dispatch를 실행합니다', () => {
+      it('dispatch 함수를 실행합니다', () => {
         mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
           ...mockState,
         }));
@@ -46,7 +46,7 @@ describe('LactationContainer', () => {
     });
 
     context('용량을 입력하면', () => {
-      it('dispatch를 실행합니다', () => {
+      it('dispatch 함수를 실행합니다', () => {
         mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
           ...mockState,
         }));

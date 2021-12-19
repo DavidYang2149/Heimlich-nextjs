@@ -4,4 +4,9 @@ export interface Lactation {
   recordTime: string;
 }
 
+export interface LactationOption {
+  title: string;
+  lactation: lactationType;
+}
+
 export type lactationType = 'breastMilk' | 'MotherBottleMilk' | 'PowderedBottleMilk';

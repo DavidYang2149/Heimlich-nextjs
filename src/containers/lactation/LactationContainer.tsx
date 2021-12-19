@@ -2,9 +2,10 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import InputBox from 'src/components/lactation/InputBox';
-import RadioBoxes, { Option } from 'src/components/lactation/RadioBoxes';
+import RadioBoxes from 'src/components/lactation/RadioBoxes';
 import { setInteraction } from 'src/redux/lactation/interaction';
 import { RootReducer } from 'src/redux/rootReducer';
+import { lactationOptions } from 'src/utils/constants';
 
 import styles from 'styles/Insert.module.css';
 
@@ -16,11 +17,6 @@ const LactationContainer = () => {
   }));
 
   const { lactationType, amount } = interaction;
-  const options: Option[] = [
-    { title: '직수', lactation: 'breastMilk' },
-    { title: '모유', lactation: 'MotherBottleMilk' },
-    { title: '분유', lactation: 'PowderedBottleMilk' },
-  ];
 
   const handleInteractionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -34,7 +30,7 @@ const LactationContainer = () => {
       </h1>
       <RadioBoxes
         name="lactationType"
-        options={options}
+        options={lactationOptions}
         value={lactationType}
         onChange={handleInteractionChange}
       />

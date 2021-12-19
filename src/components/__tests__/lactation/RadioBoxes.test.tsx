@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import RadioBoxes, { Option, Props } from 'src/components/lactation/RadioBoxes';
+import RadioBoxes, { Props } from 'src/components/lactation/RadioBoxes';
+import { lactationOptions } from 'src/utils/constants';
 
 describe('RadioBoxes', () => {
   const handleChange = jest.fn();
@@ -21,15 +22,9 @@ describe('RadioBoxes', () => {
   ));
 
   it('RadioBoxes 컴포넌트를 랜딩합니다', () => {
-    const options: Option[] = [
-      { title: '직수', lactation: 'breastMilk' },
-      { title: '모유', lactation: 'MotherBottleMilk' },
-      { title: '분유', lactation: 'PowderedBottleMilk' },
-    ];
-
     const { getByLabelText } = renderRadioBoxes({
       name: 'lactationType',
-      options,
+      options: lactationOptions,
       value: 'breastMilk',
       onChange: handleChange,
     });
@@ -41,15 +36,9 @@ describe('RadioBoxes', () => {
 
   context('라디오 버튼을 클릭을 클릭하면', () => {
     it('onChange 함수를 실행합니다', () => {
-      const options: Option[] = [
-        { title: '직수', lactation: 'breastMilk' },
-        { title: '모유', lactation: 'MotherBottleMilk' },
-        { title: '분유', lactation: 'PowderedBottleMilk' },
-      ];
-
       const { getByLabelText } = renderRadioBoxes({
         name: 'lactationType',
-        options,
+        options: lactationOptions,
         value: 'breastMilk',
         onChange: handleChange,
       });

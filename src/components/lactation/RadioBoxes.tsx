@@ -1,17 +1,12 @@
 import React from 'react';
 
-import { lactationType } from 'src/types/lactation';
+import { LactationOption, lactationType } from 'src/types/lactation';
 
 import styles from 'styles/Insert.module.css';
 
-export interface Option {
-  title: string;
-  lactation: lactationType;
-}
-
 export interface Props {
   name: string;
-  options: Option[];
+  options: LactationOption[];
   value: lactationType;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

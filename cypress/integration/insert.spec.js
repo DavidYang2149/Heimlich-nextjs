@@ -17,7 +17,6 @@ describe('입력 화면', () => {
   it('수유 용량을 입력합니다', () => {
     cy.get('#amount').should('have.value', 0);
 
-    cy.get('#amount').type('{backspace}')
     cy.get('#amount').type(40);
 
     cy.get('#amount').should('have.value', 40);

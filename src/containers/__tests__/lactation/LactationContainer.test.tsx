@@ -45,18 +45,35 @@ describe('LactationContainer', () => {
       });
     });
 
-    context('용량을 입력하면', () => {
-      it('dispatch 함수를 실행합니다', () => {
-        mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
-          ...mockState,
-        }));
+    context('용량을 입력할 때', () => {
+      context('숫자가 들어가면', () => {
+        it('dispatch 함수를 실행합니다', () => {
+          mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
+            ...mockState,
+          }));
 
-        const { getByLabelText } = renderLactationContainer();
+          const { getByLabelText } = renderLactationContainer();
 
-        const input = getByLabelText('용량');
-        fireEvent.change(input, { target: { value: 100 } });
+          const input = getByLabelText('용량');
+          fireEvent.change(input, { target: { value: 100 } });
 
-        expect(dispatch).toBeCalledTimes(1);
+          expect(dispatch).toBeCalledTimes(1);
+        });
+      });
+
+      context('falsy가 들어가면', () => {
+        it('dispatch 함수를 실행합니다', () => {
+          mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
+            ...mockState,
+          }));
+
+          const { getByLabelText } = renderLactationContainer();
+
+          const input = getByLabelText('용량');
+          fireEvent.change(input, { target: { value: null } });
+
+          expect(dispatch).toBeCalledTimes(1);
+        });
       });
     });
   });

@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import InputBox from 'src/components/lactation/InputBox';
 import RadioBoxes from 'src/components/lactation/RadioBoxes';
-import { setInteraction } from 'src/redux/lactation/interaction';
+import { setAmount, setLactationType } from 'src/redux/lactation/interaction';
 import { RootReducer } from 'src/redux/rootReducer';
+import { lactationType as typeOfLactation } from 'src/types/lactation';
 import { lactationOptions } from 'src/utils/constants';
 
 import styles from 'styles/Insert.module.css';
@@ -20,7 +21,14 @@ const LactationContainer = () => {
 
   const handleInteractionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    dispatch(setInteraction({ name, value }));
+
+    if (name === 'lactationType') {
+      dispatch(setLactationType(value as typeOfLactation));
+    }
+
+    if (name === 'amount') {
+      dispatch(setAmount(parseInt(value, 10) || 0));
+    }
   };
 
   return (

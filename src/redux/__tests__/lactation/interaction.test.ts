@@ -4,7 +4,8 @@ import thunk, { ThunkDispatch } from 'redux-thunk';
 
 import reducer, {
   InteractionReducer,
-  setInteraction,
+  setLactationType,
+  setAmount,
 } from 'src/redux/lactation/interaction';
 import { RootReducer } from 'src/redux/rootReducer';
 // import mockRootReducer from '__mocks__/fixtures/mockTools';
@@ -27,9 +28,20 @@ describe('interaction reducer', () => {
     });
   });
 
-  describe('setInteraction', () => {
-    it('run setInteraction', () => {
-      const state = reducer(initialState, setInteraction({ name: 'amount', value: 20 }));
+  describe('setLactationType', () => {
+    it('setLactationType 함수를 실행합니다 ', () => {
+      const state = reducer(initialState, setLactationType('PowderedBottleMilk'));
+
+      expect(state).toEqual({
+        ...initialState,
+        lactationType: 'PowderedBottleMilk',
+      });
+    });
+  });
+
+  describe('setAmount', () => {
+    it('setAmount 함수를 실행합니다', () => {
+      const state = reducer(initialState, setAmount(20));
 
       expect(state).toEqual({
         ...initialState,

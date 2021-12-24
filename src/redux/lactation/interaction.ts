@@ -20,17 +20,24 @@ const { actions, reducer } = createSlice({
   name: 'interaction',
   initialState,
   reducers: {
-    setInteraction(state, { payload: { name, value } }: PayloadAction<{ name: string, value: lactationType | number | string }>) {
+    setLactationType(state, { payload: value }: PayloadAction<lactationType>) {
       return {
         ...state,
-        [name]: value,
+        lactationType: value,
+      };
+    },
+    setAmount(state, { payload: value }: PayloadAction<number>) {
+      return {
+        ...state,
+        amount: value,
       };
     },
   },
 });
 
 export const {
-  setInteraction,
+  setLactationType,
+  setAmount,
 } = actions;
 
 export default reducer;

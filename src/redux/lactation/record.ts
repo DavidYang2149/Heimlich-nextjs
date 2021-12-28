@@ -21,6 +21,11 @@ const { actions, reducer } = createSlice({
         record: [...payload],
       };
     },
+    addRecord(state, { payload }: PayloadAction<Lactation>) {
+      return {
+        record: [payload, ...state.record],
+      };
+    },
   },
 });
 
@@ -30,6 +35,7 @@ export const getRecord = () => (dispatch: Dispatch<PayloadAction<Lactation[]>>) 
 
 export const {
   setRecord,
+  addRecord,
 } = actions;
 
 export default reducer;

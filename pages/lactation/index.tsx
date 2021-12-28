@@ -1,10 +1,20 @@
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import LactationContainer from 'src/containers/lactation/LactationContainer';
+import { setRecordTime } from 'src/redux/lactation/interaction';
 
 import styles from 'styles/Insert.module.css';
 
 const LactationPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const NOW = new Date().toISOString();
+    dispatch(setRecordTime(NOW));
+  }, []); // eslint-disable-line
+
   return (
     <div className={styles.container}>
       <Head>

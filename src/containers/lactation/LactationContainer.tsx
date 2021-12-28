@@ -1,9 +1,10 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import Button from 'src/components/lactation/Button';
 import InputBox from 'src/components/lactation/InputBox';
 import RadioBoxes from 'src/components/lactation/RadioBoxes';
-import { setAmount, setLactationType } from 'src/redux/lactation/interaction';
+import { setLactationType, setAmount, saveLactation } from 'src/redux/lactation/interaction';
 import { RootReducer } from 'src/redux/rootReducer';
 import { lactationType as typeOfLactation } from 'src/types/lactation';
 import { lactationOptions } from 'src/utils/constants';
@@ -31,6 +32,10 @@ const LactationContainer = () => {
     }
   };
 
+  const handleClickSaveRecord = () => {
+    dispatch(saveLactation());
+  };
+
   return (
     <>
       <h1 className={styles.title}>
@@ -48,9 +53,7 @@ const LactationContainer = () => {
         value={amount}
         onChange={handleInteractionChange}
       />
-      <div>
-        <button type="button" className={styles.button}>저장</button>
-      </div>
+      <Button onClick={handleClickSaveRecord} />
     </>
   );
 };

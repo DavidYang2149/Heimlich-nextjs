@@ -77,4 +77,21 @@ describe('LactationContainer', () => {
       });
     });
   });
+
+  describe('handleClickSaveRecord 함수를 검사하기 위해', () => {
+    context('저장 버튼을 클릭하면', () => {
+      it('dispatch 함수를 실행합니다', () => {
+        mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
+          ...mockState,
+        }));
+
+        const { getByText } = renderLactationContainer();
+
+        const input = getByText('저장');
+        fireEvent.click(input);
+
+        expect(dispatch).toBeCalledTimes(1);
+      });
+    });
+  });
 });

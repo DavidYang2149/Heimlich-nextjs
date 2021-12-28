@@ -6,14 +6,19 @@ import reducer, {
   InteractionReducer,
   setLactationType,
   setAmount,
+  setRecordTime,
+  clearInteraction,
+  saveLactation,
+  InteractionState,
 } from 'src/redux/lactation/interaction';
+import { addRecord } from 'src/redux/lactation/record';
 import { RootReducer } from 'src/redux/rootReducer';
-// import mockRootReducer from '__mocks__/fixtures/mockTools';
+import mockRootReducer from '__mocks__/fixtures/mockTools';
 
 const middlewares = [thunk];
 const mockStore = configureStore<InteractionReducer | RootReducer, ThunkDispatch<RootReducer, void, AnyAction>>(middlewares);
 
-describe('interaction reducer', () => {
+describe('interaction reducers', () => {
   const initialState: InteractionReducer = {
     lactationType: 'breastMilk',
     amount: 0,
@@ -47,6 +52,57 @@ describe('interaction reducer', () => {
         ...initialState,
         amount: 20,
       });
+    });
+  });
+
+  describe('setRecordTime', () => {
+    it('setRecordTime reducer를 실행합니다', () => {
+      const NOW = new Date().toISOString();
+      const state = reducer(initialState, setRecordTime(NOW));
+
+      expect(state).toEqual({
+        ...initialState,
+        recordTime: NOW,
+      });
+    });
+  });
+
+  describe('clearInteraction', () => {
+    it('clearInteraction 함수를 실행합니다', () => {
+      const state = reducer({
+        lactationType: 'PowderedBottleMilk',
+        amount: 40,
+        recordTime: '2021-12-27T23:36:14.119Z',
+      }, clearInteraction());
+
+      expect(state).toEqual({
+        ...initialState,
+      });
+    });
+  });
+});
+
+describe('interaction functions', () => {
+  describe('saveLactation', () => {
+    it('saveLactation 함수를 실행합니다', () => {
+      const mockInteraction: InteractionState = {
+        lactationType: 'PowderedBottleMilk',
+        amount: 40,
+        recordTime: '2021-12-27T23:36:14.119Z',
+      };
+
+      const store = mockStore({
+        ...mockRootReducer,
+        interaction: {
+          ...mockInteraction,
+        },
+      });
+      store.dispatch(saveLactation());
+
+      const actions = store.getActions();
+
+      expect(actions[0]).toEqual(addRecord({ ...mockInteraction }));
+      expect(actions[1]).toEqual(clearInteraction());
     });
   });
 });

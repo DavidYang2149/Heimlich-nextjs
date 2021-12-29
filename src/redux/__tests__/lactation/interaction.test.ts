@@ -25,8 +25,8 @@ describe('interaction reducers', () => {
     recordTime: '',
   };
 
-  context('when previous state is undefined', () => {
-    it('returns initialState', () => {
+  context('state가 undefined이면', () => {
+    it('initialState를 변환합니다', () => {
       const state = reducer(undefined, { type: 'action' });
 
       expect(state).toEqual(initialState);
@@ -34,7 +34,7 @@ describe('interaction reducers', () => {
   });
 
   describe('setLactationType', () => {
-    it('setLactationType 함수를 실행합니다 ', () => {
+    it('setLactationType reducer를 실행합니다 ', () => {
       const state = reducer(initialState, setLactationType('PowderedBottleMilk'));
 
       expect(state).toEqual({
@@ -45,7 +45,7 @@ describe('interaction reducers', () => {
   });
 
   describe('setAmount', () => {
-    it('setAmount 함수를 실행합니다', () => {
+    it('setAmount reducer를 실행합니다', () => {
       const state = reducer(initialState, setAmount(20));
 
       expect(state).toEqual({
@@ -68,7 +68,7 @@ describe('interaction reducers', () => {
   });
 
   describe('clearInteraction', () => {
-    it('clearInteraction 함수를 실행합니다', () => {
+    it('clearInteraction reducer를 실행합니다', () => {
       const state = reducer({
         lactationType: 'PowderedBottleMilk',
         amount: 40,

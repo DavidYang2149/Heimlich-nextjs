@@ -19,8 +19,8 @@ describe('user reducers', () => {
     record: [],
   };
 
-  context('when previous state is undefined', () => {
-    it('returns initialState', () => {
+  context('state가 undefined이면', () => {
+    it('initialState를 변환합니다', () => {
       const state = reducer(undefined, { type: 'action' });
 
       expect(state).toEqual(initialState);
@@ -28,7 +28,7 @@ describe('user reducers', () => {
   });
 
   describe('setRecord', () => {
-    it('run setRecord', () => {
+    it('setRecord reducer를 실행합니다', () => {
       const state = reducer(initialState, setRecord([]));
 
       expect(state).toEqual({
@@ -60,7 +60,7 @@ describe('user reducers', () => {
 
 describe('record functions', () => {
   describe('getRecord', () => {
-    it('runs getLoginUser', () => {
+    it('getRecord 함수를 실행합니다', () => {
       const store = mockStore({
         ...mockRootReducer,
       });

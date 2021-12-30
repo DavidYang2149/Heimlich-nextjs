@@ -3,7 +3,7 @@ import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit';
 import { RootReducer } from 'src/redux/rootReducer';
 import { Lactation, lactationType } from 'src/types/lactation';
 
-import { addRecord } from './record';
+import { unshiftRecord } from './record';
 
 export type InteractionReducer = ReturnType<typeof reducer>;
 
@@ -58,7 +58,7 @@ export const saveLactation = () => (
 ) => {
   const { interaction } = getState();
 
-  dispatch(addRecord(interaction));
+  dispatch(unshiftRecord(interaction));
   dispatch(actions.clearInteraction());
 };
 

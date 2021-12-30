@@ -20,7 +20,7 @@ const LactationContainer = () => {
 
   const { lactationType, amount } = interaction;
 
-  const handleInteractionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInteraction = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     if (name === 'lactationType') {
@@ -45,13 +45,13 @@ const LactationContainer = () => {
         name="lactationType"
         options={lactationOptions}
         value={lactationType}
-        onChange={handleInteractionChange}
+        onChange={handleChangeInteraction}
       />
       <InputBox
         id="amount"
         title="용량"
         value={amount}
-        onChange={handleInteractionChange}
+        onChange={handleChangeInteraction}
       />
       <Button onClick={handleClickSaveRecord} />
     </>

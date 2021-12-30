@@ -5,7 +5,7 @@ import thunk, { ThunkDispatch } from 'redux-thunk';
 import reducer, {
   RecordReducer,
   setRecord,
-  addRecord,
+  unshiftRecord,
   getRecord,
 } from 'src/redux/lactation/record';
 import { RootReducer } from 'src/redux/rootReducer';
@@ -38,9 +38,9 @@ describe('user reducers', () => {
     });
   });
 
-  describe('addRecord', () => {
-    it('addRecord reducer를 실행합니다', () => {
-      const state = reducer(initialState, addRecord({
+  describe('unshiftRecord', () => {
+    it('unshiftRecord reducer를 실행합니다', () => {
+      const state = reducer(initialState, unshiftRecord({
         lactationType: 'breastMilk',
         amount: 20,
         recordTime: '2021-12-27T23:36:14.119Z',

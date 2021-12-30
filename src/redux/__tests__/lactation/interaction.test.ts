@@ -11,7 +11,7 @@ import reducer, {
   saveLactation,
   InteractionState,
 } from 'src/redux/lactation/interaction';
-import { addRecord } from 'src/redux/lactation/record';
+import { unshiftRecord } from 'src/redux/lactation/record';
 import { RootReducer } from 'src/redux/rootReducer';
 import mockRootReducer from '__mocks__/fixtures/mockTools';
 
@@ -101,7 +101,7 @@ describe('interaction functions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(addRecord({ ...mockInteraction }));
+      expect(actions[0]).toEqual(unshiftRecord({ ...mockInteraction }));
       expect(actions[1]).toEqual(clearInteraction());
     });
   });

@@ -29,7 +29,7 @@ const { actions, reducer } = createSlice({
   },
 });
 
-export const getRecord = () => (dispatch: Dispatch<PayloadAction<Lactation[]>>) => {
+export const loadRecord = () => (dispatch: Dispatch<PayloadAction<Lactation[]>>) => {
   dispatch(actions.setRecord([]));
 };
 

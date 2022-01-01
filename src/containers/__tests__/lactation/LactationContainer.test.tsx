@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { fireEvent, render } from '@testing-library/react';
 
 import mockState, { mockUseDispatch, mockUseSelector } from '__mocks__/fixtures/mockTools';
@@ -6,6 +7,10 @@ import LactationContainer from 'src/containers/lactation/LactationContainer';
 import { RootReducer } from 'src/redux/rootReducer';
 
 jest.mock('react-redux');
+jest.mock('next/router', () => ({
+  __esModule: true,
+  useRouter: jest.fn(),
+}));
 
 describe('LactationContainer', () => {
   const dispatch = jest.fn();
@@ -85,12 +90,17 @@ describe('LactationContainer', () => {
           ...mockState,
         }));
 
+        const mockRouter = { push: jest.fn() };
+        (useRouter as jest.Mock).mockReturnValue(mockRouter);
+
         const { getByText } = renderLactationContainer();
 
         const input = getByText('저장');
         fireEvent.click(input);
 
         expect(dispatch).toBeCalledTimes(1);
+
+        expect(mockRouter.push).toHaveBeenCalledWith('/');
       });
     });
   });

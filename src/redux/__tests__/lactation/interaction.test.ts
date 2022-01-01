@@ -83,6 +83,12 @@ describe('interaction reducers', () => {
 });
 
 describe('interaction functions', () => {
+  jest.spyOn(window.localStorage.__proto__, 'setItem');
+
+  beforeEach(() => {
+    Storage.prototype.setItem = jest.fn();
+  });
+
   describe('saveLactation', () => {
     it('saveLactation 함수를 실행합니다', () => {
       const mockInteraction: InteractionState = {
@@ -103,6 +109,7 @@ describe('interaction functions', () => {
 
       expect(actions[0]).toEqual(unshiftRecord({ ...mockInteraction }));
       expect(actions[1]).toEqual(clearInteraction());
+      expect(localStorage.setItem).toBeCalled();
     });
   });
 });

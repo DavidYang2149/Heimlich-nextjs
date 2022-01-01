@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Button from 'src/components/lactation/Button';
@@ -12,6 +13,7 @@ import { lactationOptions } from 'src/utils/constants';
 import styles from 'styles/Insert.module.css';
 
 const LactationContainer = () => {
+  const router = useRouter();
   const dispatch = useDispatch();
 
   const { interaction } = useSelector((state: RootReducer) => ({
@@ -34,6 +36,7 @@ const LactationContainer = () => {
 
   const handleClickSaveRecord = () => {
     dispatch(saveLactation());
+    router.push('/');
   };
 
   return (

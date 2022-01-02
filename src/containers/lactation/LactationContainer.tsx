@@ -19,18 +19,19 @@ const LactationContainer = () => {
   const { interaction } = useSelector((state: RootReducer) => ({
     interaction: state.interaction,
   }));
-
   const { lactationType, amount } = interaction;
 
   const handleChangeInteraction = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     if (name === 'lactationType') {
-      dispatch(setLactationType(value as typeOfLactation));
+      const type = value as typeOfLactation;
+      dispatch(setLactationType(type));
     }
 
     if (name === 'amount') {
-      dispatch(setAmount(parseInt(value, 10) || 0));
+      const number = parseInt(value, 10) || 0;
+      dispatch(setAmount(number));
     }
   };
 

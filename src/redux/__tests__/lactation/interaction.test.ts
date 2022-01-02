@@ -3,23 +3,23 @@ import configureStore from 'redux-mock-store';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 
 import reducer, {
-  InteractionReducer,
+  InteractionState,
   setLactationType,
   setAmount,
   setRecordTime,
   clearInteraction,
   saveLactation,
-  InteractionState,
+  InteractionSliceState,
 } from 'src/redux/lactation/interaction';
 import { unshiftRecord } from 'src/redux/lactation/record';
 import { RootState } from 'src/redux/rootReducer';
 import mockRootState from '__mocks__/fixtures/mockTools';
 
 const middlewares = [thunk];
-const mockStore = configureStore<InteractionReducer | RootState, ThunkDispatch<RootState, void, AnyAction>>(middlewares);
+const mockStore = configureStore<InteractionState | RootState, ThunkDispatch<RootState, void, AnyAction>>(middlewares);
 
 describe('interaction reducers', () => {
-  const initialState: InteractionReducer = {
+  const initialState: InteractionState = {
     lactationType: 'breastMilk',
     amount: 0,
     recordTime: '',
@@ -91,7 +91,7 @@ describe('interaction functions', () => {
 
   describe('saveLactation', () => {
     it('saveLactation 함수를 실행합니다', () => {
-      const mockInteraction: InteractionState = {
+      const mockInteraction: InteractionSliceState = {
         lactationType: 'PowderedBottleMilk',
         amount: 40,
         recordTime: '2021-12-27T23:36:14.119Z',

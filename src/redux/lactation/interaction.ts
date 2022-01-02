@@ -6,15 +6,15 @@ import { saveItem } from 'src/utils/storage';
 
 import { unshiftRecord } from './record';
 
-export type InteractionReducer = ReturnType<typeof reducer>;
+export type InteractionState = ReturnType<typeof reducer>;
 
-export interface InteractionState {
+export interface InteractionSliceState {
   lactationType: lactationType;
   amount: number;
   recordTime: string;
 }
 
-const initialState: InteractionState = {
+const initialState: InteractionSliceState = {
   lactationType: 'breastMilk',
   amount: 0,
   recordTime: '',

@@ -3,7 +3,7 @@ import configureStore from 'redux-mock-store';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 
 import reducer, {
-  RecordReducer,
+  RecordState,
   setRecords,
   unshiftRecord,
   loadRecords,
@@ -12,10 +12,10 @@ import { RootState } from 'src/redux/rootReducer';
 import mockRootState from '__mocks__/fixtures/mockTools';
 
 const middlewares = [thunk];
-const mockStore = configureStore<RecordReducer | RootState, ThunkDispatch<RootState, void, AnyAction>>(middlewares);
+const mockStore = configureStore<RecordState | RootState, ThunkDispatch<RootState, void, AnyAction>>(middlewares);
 
 describe('record reducers', () => {
-  const initialState: RecordReducer = {
+  const initialState: RecordState = {
     records: [],
   };
 

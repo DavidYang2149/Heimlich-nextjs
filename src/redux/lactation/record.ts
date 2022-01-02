@@ -2,13 +2,13 @@ import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit';
 
 import { Lactation } from 'src/types/lactation';
 
-export type RecordReducer = ReturnType<typeof reducer>;
+export type RecordState = ReturnType<typeof reducer>;
 
-export interface RecordState {
+export interface RecordSliceState {
   records: Lactation[];
 }
 
-const initialState: RecordState = {
+const initialState: RecordSliceState = {
   records: [],
 };
 

@@ -15,15 +15,15 @@ describe('storage', () => {
     Storage.prototype.clear = jest.fn();
   });
 
-  describe('saveItem', () => {
-    describe('loadItem', () => {
-      it('localStorage의 getItem 함수를 호출합니다', () => {
-        loadItem({ key: 'flower' });
+  describe('loadItem', () => {
+    it('localStorage의 getItem 함수를 호출합니다', () => {
+      loadItem({ key: 'flower' });
 
-        expect(localStorage.getItem).toBeCalledWith('flower');
-      });
+      expect(localStorage.getItem).toBeCalledWith('flower');
     });
+  });
 
+  describe('saveItem', () => {
     it('localStorage의 setItem 함수를 호출합니다', () => {
       saveItem({ key: 'password', value: 'hackerman' });
 

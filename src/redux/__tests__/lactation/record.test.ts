@@ -14,7 +14,7 @@ import mockRootReducer from '__mocks__/fixtures/mockTools';
 const middlewares = [thunk];
 const mockStore = configureStore<RecordReducer | RootReducer, ThunkDispatch<RootReducer, void, AnyAction>>(middlewares);
 
-describe('user reducers', () => {
+describe('record reducers', () => {
   const initialState: RecordReducer = {
     records: [],
   };

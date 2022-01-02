@@ -9,7 +9,7 @@ const mockRootReducer: RootReducer = {
     recordTime: '',
   },
   record: {
-    record: [],
+    records: [],
   },
 };
 

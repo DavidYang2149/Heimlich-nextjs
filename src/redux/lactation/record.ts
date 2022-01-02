@@ -5,36 +5,36 @@ import { Lactation } from 'src/types/lactation';
 export type RecordReducer = ReturnType<typeof reducer>;
 
 export interface RecordState {
-  record: Lactation[];
+  records: Lactation[];
 }
 
 const initialState: RecordState = {
-  record: [],
+  records: [],
 };
 
 const { actions, reducer } = createSlice({
   name: 'record',
   initialState,
   reducers: {
-    setRecord(state, { payload }: PayloadAction<Lactation[]>) {
+    setRecords(state, { payload }: PayloadAction<Lactation[]>) {
       return {
-        record: [...payload],
+        records: [...payload],
       };
     },
     unshiftRecord(state, { payload }: PayloadAction<Lactation>) {
       return {
-        record: [payload, ...state.record],
+        records: [payload, ...state.records],
       };
     },
   },
 });
 
 export const loadRecord = () => (dispatch: Dispatch<PayloadAction<Lactation[]>>) => {
-  dispatch(actions.setRecord([]));
+  dispatch(actions.setRecords([]));
 };
 
 export const {
-  setRecord,
+  setRecords,
   unshiftRecord,
 } = actions;
 

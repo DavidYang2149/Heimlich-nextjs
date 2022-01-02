@@ -4,7 +4,7 @@ import thunk, { ThunkDispatch } from 'redux-thunk';
 
 import reducer, {
   RecordReducer,
-  setRecord,
+  setRecords,
   unshiftRecord,
   loadRecord,
 } from 'src/redux/lactation/record';
@@ -16,7 +16,7 @@ const mockStore = configureStore<RecordReducer | RootReducer, ThunkDispatch<Root
 
 describe('user reducers', () => {
   const initialState: RecordReducer = {
-    record: [],
+    records: [],
   };
 
   context('state가 undefined이면', () => {
@@ -27,13 +27,13 @@ describe('user reducers', () => {
     });
   });
 
-  describe('setRecord', () => {
-    it('setRecord reducer를 실행합니다', () => {
-      const state = reducer(initialState, setRecord([]));
+  describe('setRecords', () => {
+    it('setRecords reducer를 실행합니다', () => {
+      const state = reducer(initialState, setRecords([]));
 
       expect(state).toEqual({
         ...initialState,
-        record: [],
+        records: [],
       });
     });
   });
@@ -48,7 +48,7 @@ describe('user reducers', () => {
 
       expect(state).toEqual({
         ...initialState,
-        record: [{
+        records: [{
           lactationType: 'breastMilk',
           amount: 20,
           recordTime: '2021-12-27T23:36:14.119Z',
@@ -68,7 +68,7 @@ describe('record functions', () => {
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRecord([]));
+      expect(actions[0]).toEqual(setRecords([]));
     });
   });
 });

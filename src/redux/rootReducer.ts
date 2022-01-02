@@ -8,6 +8,6 @@ const rootReducer = combineReducers({
   record: recordReducer,
 });
 
-export type RootReducer = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof rootReducer>;
 
 export default rootReducer;

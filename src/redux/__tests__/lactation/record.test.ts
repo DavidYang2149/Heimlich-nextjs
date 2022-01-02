@@ -8,11 +8,11 @@ import reducer, {
   unshiftRecord,
   loadRecords,
 } from 'src/redux/lactation/record';
-import { RootReducer } from 'src/redux/rootReducer';
-import mockRootReducer from '__mocks__/fixtures/mockTools';
+import { RootState } from 'src/redux/rootReducer';
+import mockRootState from '__mocks__/fixtures/mockTools';
 
 const middlewares = [thunk];
-const mockStore = configureStore<RecordReducer | RootReducer, ThunkDispatch<RootReducer, void, AnyAction>>(middlewares);
+const mockStore = configureStore<RecordReducer | RootState, ThunkDispatch<RootState, void, AnyAction>>(middlewares);
 
 describe('record reducers', () => {
   const initialState: RecordReducer = {
@@ -62,7 +62,7 @@ describe('record functions', () => {
   describe('loadRecords', () => {
     it('loadRecords 함수를 실행합니다', () => {
       const store = mockStore({
-        ...mockRootReducer,
+        ...mockRootState,
       });
       store.dispatch(loadRecords());
 

@@ -12,11 +12,11 @@ import reducer, {
   InteractionState,
 } from 'src/redux/lactation/interaction';
 import { unshiftRecord } from 'src/redux/lactation/record';
-import { RootReducer } from 'src/redux/rootReducer';
-import mockRootReducer from '__mocks__/fixtures/mockTools';
+import { RootState } from 'src/redux/rootReducer';
+import mockRootState from '__mocks__/fixtures/mockTools';
 
 const middlewares = [thunk];
-const mockStore = configureStore<InteractionReducer | RootReducer, ThunkDispatch<RootReducer, void, AnyAction>>(middlewares);
+const mockStore = configureStore<InteractionReducer | RootState, ThunkDispatch<RootState, void, AnyAction>>(middlewares);
 
 describe('interaction reducers', () => {
   const initialState: InteractionReducer = {
@@ -98,7 +98,7 @@ describe('interaction functions', () => {
       };
 
       const store = mockStore({
-        ...mockRootReducer,
+        ...mockRootState,
         interaction: {
           ...mockInteraction,
         },

@@ -1,6 +1,6 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit';
 
-import { RootReducer } from 'src/redux/rootReducer';
+import { RootState } from 'src/redux/rootReducer';
 import { Lactation, lactationType } from 'src/types/lactation';
 import { saveItem } from 'src/utils/storage';
 
@@ -55,7 +55,7 @@ const { actions, reducer } = createSlice({
 
 export const saveLactation = () => (
   dispatch: Dispatch<PayloadAction<Lactation | undefined>>,
-  getState: () => RootReducer,
+  getState: () => RootState,
 ) => {
   const { interaction } = getState();
   dispatch(unshiftRecord(interaction));

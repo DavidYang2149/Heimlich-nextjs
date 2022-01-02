@@ -6,7 +6,7 @@ import reducer, {
   RecordReducer,
   setRecords,
   unshiftRecord,
-  loadRecord,
+  loadRecords,
 } from 'src/redux/lactation/record';
 import { RootReducer } from 'src/redux/rootReducer';
 import mockRootReducer from '__mocks__/fixtures/mockTools';
@@ -59,12 +59,12 @@ describe('user reducers', () => {
 });
 
 describe('record functions', () => {
-  describe('loadRecord', () => {
-    it('loadRecord 함수를 실행합니다', () => {
+  describe('loadRecords', () => {
+    it('loadRecords 함수를 실행합니다', () => {
       const store = mockStore({
         ...mockRootReducer,
       });
-      store.dispatch(loadRecord());
+      store.dispatch(loadRecords());
 
       const actions = store.getActions();
 

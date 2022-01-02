@@ -3,20 +3,20 @@ import configureStore from 'redux-mock-store';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 
 import reducer, {
-  RecordReducer,
-  setRecord,
+  RecordState,
+  setRecords,
   unshiftRecord,
-  loadRecord,
+  loadRecords,
 } from 'src/redux/lactation/record';
-import { RootReducer } from 'src/redux/rootReducer';
-import mockRootReducer from '__mocks__/fixtures/mockTools';
+import { RootState } from 'src/redux/rootReducer';
+import mockRootState from '__mocks__/fixtures/mockTools';
 
 const middlewares = [thunk];
-const mockStore = configureStore<RecordReducer | RootReducer, ThunkDispatch<RootReducer, void, AnyAction>>(middlewares);
+const mockStore = configureStore<RecordState | RootState, ThunkDispatch<RootState, void, AnyAction>>(middlewares);
 
-describe('user reducers', () => {
-  const initialState: RecordReducer = {
-    record: [],
+describe('record reducers', () => {
+  const initialState: RecordState = {
+    records: [],
   };
 
   context('state가 undefined이면', () => {
@@ -27,13 +27,13 @@ describe('user reducers', () => {
     });
   });
 
-  describe('setRecord', () => {
-    it('setRecord reducer를 실행합니다', () => {
-      const state = reducer(initialState, setRecord([]));
+  describe('setRecords', () => {
+    it('setRecords reducer를 실행합니다', () => {
+      const state = reducer(initialState, setRecords([]));
 
       expect(state).toEqual({
         ...initialState,
-        record: [],
+        records: [],
       });
     });
   });
@@ -48,7 +48,7 @@ describe('user reducers', () => {
 
       expect(state).toEqual({
         ...initialState,
-        record: [{
+        records: [{
           lactationType: 'breastMilk',
           amount: 20,
           recordTime: '2021-12-27T23:36:14.119Z',
@@ -59,16 +59,16 @@ describe('user reducers', () => {
 });
 
 describe('record functions', () => {
-  describe('loadRecord', () => {
-    it('loadRecord 함수를 실행합니다', () => {
+  describe('loadRecords', () => {
+    it('loadRecords 함수를 실행합니다', () => {
       const store = mockStore({
-        ...mockRootReducer,
+        ...mockRootState,
       });
-      store.dispatch(loadRecord());
+      store.dispatch(loadRecords());
 
       const actions = store.getActions();
 
-      expect(actions[0]).toEqual(setRecord([]));
+      expect(actions[0]).toEqual(setRecords([]));
     });
   });
 });

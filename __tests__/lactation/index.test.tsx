@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import mockState, { mockUseDispatch, mockUseSelector } from '__mocks__/fixtures/mockTools';
 import LactationPage from 'pages/lactation/index';
-import { RootReducer } from 'src/redux/rootReducer';
+import { RootState } from 'src/redux/rootReducer';
 
 jest.mock('react-redux');
 
@@ -14,7 +14,7 @@ describe('LactationPage', () => {
     jest.resetAllMocks();
     dispatch.mockClear();
     mockUseDispatch.mockImplementation(() => dispatch);
-    mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
+    mockUseSelector.mockImplementation((selector: (arg: RootState) => void) => selector({
       ...mockState,
     }));
   });

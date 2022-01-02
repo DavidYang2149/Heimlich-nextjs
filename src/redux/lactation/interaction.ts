@@ -1,20 +1,20 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit';
 
-import { RootReducer } from 'src/redux/rootReducer';
+import { RootState } from 'src/redux/rootReducer';
 import { Lactation, lactationType } from 'src/types/lactation';
 import { saveItem } from 'src/utils/storage';
 
 import { unshiftRecord } from './record';
 
-export type InteractionReducer = ReturnType<typeof reducer>;
+export type InteractionState = ReturnType<typeof reducer>;
 
-export interface InteractionState {
+export interface InteractionSliceState {
   lactationType: lactationType;
   amount: number;
   recordTime: string;
 }
 
-const initialState: InteractionState = {
+const initialState: InteractionSliceState = {
   lactationType: 'breastMilk',
   amount: 0,
   recordTime: '',
@@ -55,7 +55,7 @@ const { actions, reducer } = createSlice({
 
 export const saveLactation = () => (
   dispatch: Dispatch<PayloadAction<Lactation | undefined>>,
-  getState: () => RootReducer,
+  getState: () => RootState,
 ) => {
   const { interaction } = getState();
   dispatch(unshiftRecord(interaction));

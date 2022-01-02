@@ -6,7 +6,7 @@ import Button from 'src/components/lactation/Button';
 import InputBox from 'src/components/lactation/InputBox';
 import RadioBoxes from 'src/components/lactation/RadioBoxes';
 import { setLactationType, setAmount, saveLactation } from 'src/redux/lactation/interaction';
-import { RootReducer } from 'src/redux/rootReducer';
+import { RootState } from 'src/redux/rootReducer';
 import { lactationType as typeOfLactation } from 'src/types/lactation';
 import { lactationOptions } from 'src/utils/constants';
 
@@ -16,21 +16,22 @@ const LactationContainer = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const { interaction } = useSelector((state: RootReducer) => ({
+  const { interaction } = useSelector((state: RootState) => ({
     interaction: state.interaction,
   }));
-
   const { lactationType, amount } = interaction;
 
   const handleChangeInteraction = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     if (name === 'lactationType') {
-      dispatch(setLactationType(value as typeOfLactation));
+      const type = value as typeOfLactation;
+      dispatch(setLactationType(type));
     }
 
     if (name === 'amount') {
-      dispatch(setAmount(parseInt(value, 10) || 0));
+      const number = parseInt(value, 10) || 0;
+      dispatch(setAmount(number));
     }
   };
 

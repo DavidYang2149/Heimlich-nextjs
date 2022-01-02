@@ -2,39 +2,39 @@ import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit';
 
 import { Lactation } from 'src/types/lactation';
 
-export type RecordReducer = ReturnType<typeof reducer>;
+export type RecordState = ReturnType<typeof reducer>;
 
-export interface RecordState {
-  record: Lactation[];
+export interface RecordSliceState {
+  records: Lactation[];
 }
 
-const initialState: RecordState = {
-  record: [],
+const initialState: RecordSliceState = {
+  records: [],
 };
 
 const { actions, reducer } = createSlice({
   name: 'record',
   initialState,
   reducers: {
-    setRecord(state, { payload }: PayloadAction<Lactation[]>) {
+    setRecords(state, { payload }: PayloadAction<Lactation[]>) {
       return {
-        record: [...payload],
+        records: [...payload],
       };
     },
     unshiftRecord(state, { payload }: PayloadAction<Lactation>) {
       return {
-        record: [payload, ...state.record],
+        records: [payload, ...state.records],
       };
     },
   },
 });
 
-export const loadRecord = () => (dispatch: Dispatch<PayloadAction<Lactation[]>>) => {
-  dispatch(actions.setRecord([]));
+export const loadRecords = () => (dispatch: Dispatch<PayloadAction<Lactation[]>>) => {
+  dispatch(actions.setRecords([]));
 };
 
 export const {
-  setRecord,
+  setRecords,
   unshiftRecord,
 } = actions;
 

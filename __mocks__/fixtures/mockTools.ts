@@ -1,19 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import { RootReducer } from 'src/redux/rootReducer';
+import { RootState } from 'src/redux/rootReducer';
 
-const mockRootReducer: RootReducer = {
+const mockRootState: RootState = {
   interaction: {
     lactationType: 'breastMilk',
     amount: 0,
     recordTime: '',
   },
   record: {
-    record: [],
+    records: [],
   },
 };
 
 export const mockUseDispatch = useDispatch as jest.Mock;
 export const mockUseSelector = useSelector as jest.Mock;
 
-export default mockRootReducer;
+export default mockRootState;

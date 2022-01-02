@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 
 import mockState, { mockUseDispatch, mockUseSelector } from '__mocks__/fixtures/mockTools';
 import LactationContainer from 'src/containers/lactation/LactationContainer';
-import { RootReducer } from 'src/redux/rootReducer';
+import { RootState } from 'src/redux/rootReducer';
 
 jest.mock('react-redux');
 jest.mock('next/router', () => ({
@@ -19,7 +19,7 @@ describe('LactationContainer', () => {
     jest.resetAllMocks();
     dispatch.mockClear();
     mockUseDispatch.mockImplementation(() => dispatch);
-    mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
+    mockUseSelector.mockImplementation((selector: (arg: RootState) => void) => selector({
       ...mockState,
     }));
   });
@@ -37,7 +37,7 @@ describe('LactationContainer', () => {
   describe('handleClickAddFolder 함수를 검사하기 위해', () => {
     context('분유를 선택하면', () => {
       it('dispatch 함수를 실행합니다', () => {
-        mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
+        mockUseSelector.mockImplementation((selector: (arg: RootState) => void) => selector({
           ...mockState,
         }));
 
@@ -53,7 +53,7 @@ describe('LactationContainer', () => {
     context('용량을 입력할 때', () => {
       context('숫자가 들어가면', () => {
         it('dispatch 함수를 실행합니다', () => {
-          mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
+          mockUseSelector.mockImplementation((selector: (arg: RootState) => void) => selector({
             ...mockState,
           }));
 
@@ -68,7 +68,7 @@ describe('LactationContainer', () => {
 
       context('falsy가 들어가면', () => {
         it('dispatch 함수를 실행합니다', () => {
-          mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
+          mockUseSelector.mockImplementation((selector: (arg: RootState) => void) => selector({
             ...mockState,
           }));
 
@@ -86,7 +86,7 @@ describe('LactationContainer', () => {
   describe('handleClickSaveRecord 함수를 검사하기 위해', () => {
     context('저장 버튼을 클릭하면', () => {
       it('dispatch 함수를 실행합니다', () => {
-        mockUseSelector.mockImplementation((selector: (arg: RootReducer) => void) => selector({
+        mockUseSelector.mockImplementation((selector: (arg: RootState) => void) => selector({
           ...mockState,
         }));
 

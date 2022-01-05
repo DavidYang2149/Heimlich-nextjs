@@ -60,8 +60,8 @@ export const saveLactation = () => (
   const { interaction } = getState();
   dispatch(unshiftRecord(interaction));
 
-  const { record } = getState();
-  saveItem({ key: 'record', value: JSON.stringify(record) });
+  const { record: { records } } = getState();
+  saveItem({ key: 'record', value: JSON.stringify(records) });
 
   dispatch(actions.clearInteraction());
 };

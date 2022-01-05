@@ -2,10 +2,20 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { loadRecords } from 'src/redux/lactation/record';
 
 import styles from 'styles/Home.module.css';
 
 const Home: NextPage = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadRecords());
+  }, [dispatch]);
+
   return (
     <div className={styles.container}>
       <Head>

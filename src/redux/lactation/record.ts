@@ -1,6 +1,7 @@
 import { createSlice, Dispatch, PayloadAction } from '@reduxjs/toolkit';
 
 import { Lactation } from 'src/types/lactation';
+import { loadItem } from 'src/utils/storage';
 
 export type RecordState = ReturnType<typeof reducer>;
 
@@ -30,7 +31,10 @@ const { actions, reducer } = createSlice({
 });
 
 export const loadRecords = () => (dispatch: Dispatch<PayloadAction<Lactation[]>>) => {
-  dispatch(actions.setRecords([]));
+  const result = loadItem({ key: 'record' });
+  const records = (result && JSON.parse(result)) || [];
+
+  dispatch(actions.setRecords(records));
 };
 
 export const {

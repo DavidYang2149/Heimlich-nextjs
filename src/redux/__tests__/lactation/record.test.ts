@@ -9,10 +9,13 @@ import reducer, {
   loadRecords,
 } from 'src/redux/lactation/record';
 import { RootState } from 'src/redux/rootReducer';
+import { loadItem } from 'src/utils/storage';
 import mockRootState from '__mocks__/fixtures/mockTools';
 
 const middlewares = [thunk];
 const mockStore = configureStore<RecordState | RootState, ThunkDispatch<RootState, void, AnyAction>>(middlewares);
+
+jest.mock('src/utils/storage');
 
 describe('record reducers', () => {
   const initialState: RecordState = {
@@ -60,15 +63,46 @@ describe('record reducers', () => {
 
 describe('record functions', () => {
   describe('loadRecords', () => {
-    it('loadRecords 함수를 실행합니다', () => {
-      const store = mockStore({
-        ...mockRootState,
+    context('localStorage에 records 배열이 있으면', () => {
+      it('records 배열로 loadRecords 함수를 실행합니다', () => {
+        (loadItem as jest.Mock).mockImplementationOnce(() => {
+          return JSON.stringify([
+            {
+              lactationType: 'PowderedBottleMilk',
+              amount: 80,
+              recordTime: '2022-01-04T12:34:14.809Z',
+            },
+          ]);
+        });
+
+        const store = mockStore({
+          ...mockRootState,
+        });
+        store.dispatch(loadRecords());
+
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRecords([
+          {
+            lactationType: 'PowderedBottleMilk',
+            amount: 80,
+            recordTime: '2022-01-04T12:34:14.809Z',
+          },
+        ]));
       });
-      store.dispatch(loadRecords());
+    });
 
-      const actions = store.getActions();
+    context('localStorage 값이 없으면', () => {
+      it('비어있는 배열로 loadRecords 함수를 실행합니다', () => {
+        const store = mockStore({
+          ...mockRootState,
+        });
+        store.dispatch(loadRecords());
 
-      expect(actions[0]).toEqual(setRecords([]));
+        const actions = store.getActions();
+
+        expect(actions[0]).toEqual(setRecords([]));
+      });
     });
   });
 });

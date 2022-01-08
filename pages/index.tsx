@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import CustomHead from 'src/components/common/CustomHead';
 import Footer from 'src/components/common/Footer';
 import MainContainer from 'src/containers/lactation/MainContainer';
 import { loadRecords } from 'src/redux/lactation/record';
@@ -18,11 +18,7 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>heimlich</title>
-        <meta name="description" content="수유 노트" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <CustomHead />
       <MainContainer />
       <Footer />
     </div>

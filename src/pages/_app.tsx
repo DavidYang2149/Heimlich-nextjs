@@ -4,7 +4,7 @@ import type { AppProps } from 'next/app';
 
 import store from 'src/redux/store';
 
-import '../styles/globals.css';
+import 'styles/globals.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

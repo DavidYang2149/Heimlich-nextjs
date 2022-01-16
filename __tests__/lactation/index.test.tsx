@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import mockState, { mockUseDispatch, mockUseSelector } from '__mocks__/fixtures/mockTools';
-import LactationPage from 'pages/lactation/index';
+import LactationPage from 'src/pages/lactation/index';
 import { RootState } from 'src/redux/rootReducer';
 
 jest.mock('react-redux');

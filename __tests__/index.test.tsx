@@ -2,9 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import mockState, { mockUseDispatch, mockUseSelector } from '__mocks__/fixtures/mockTools';
+import Home from 'src/pages/index';
 import { RootState } from 'src/redux/rootReducer';
-
-import Home from '../pages/index';
 
 jest.mock('react-redux');
 

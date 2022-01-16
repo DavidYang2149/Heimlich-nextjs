@@ -27,17 +27,18 @@ module.exports = {
     '<rootDir>/coverage/',
     '<rootDir>/cypress/',
     '<rootDir>/.next/',
+    '<rootDir>/out/',
     'jest.config.js',
     'next.config.js',
     '_app',
     'store',
     'rootReducer',
     '<rootDir>/src/types',
-
   ],
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
-    '<rootDir>/.next/'
+    '<rootDir>/.next/',
+    '<rootDir>/out/',
   ],
   testEnvironment: 'jsdom',
   transform: {
